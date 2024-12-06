@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片压缩工具</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>在线图片压缩工具</h1>
+            <p>简单快速地压缩您的图片</p>
+        </header>
+
+        <main>
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*" hidden>
+                <div class="upload-hint">
+                    <img src="images/icons/upload.svg" alt="上传图标">
+                    <p>点击或拖拽图片到这里</p>
+                    <p class="sub-hint">支持 JPG、PNG、WEBP 格式</p>
+                </div>
+            </div>
+
+            <div class="compression-settings">
+                <h3>压缩设置</h3>
+                <div class="setting-item">
+                    <label for="quality">压缩质量:</label>
+                    <input type="range" id="quality" min="0.1" max="1" step="0.1" value="0.7">
+                    <span id="qualityValue">70% (平衡模式)</span>
+                    <div class="quality-hint">
+                        <small>* 质量越高文件越大，质量越低文件越小</small>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <label for="maxWidth">最大宽度:</label>
+                    <input type="number" id="maxWidth" value="1200" min="100" max="4000" step="100">
+                    <span>px</span>
+                </div>
+                <div class="setting-item">
+                    <label for="format">输出格式:</label>
+                    <select id="format">
+                        <option value="image/jpeg">JPEG</option>
+                        <option value="image/png">PNG</option>
+                        <option value="image/webp">WEBP</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="enableBatch">
+                        启用批量处理
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <label for="resizeMode">调整尺寸:</label>
+                    <select id="resizeMode">
+                        <option value="auto">自动(保持比例)</option>
+                        <option value="custom">自定义尺寸</option>
+                        <option value="percentage">按百分比</option>
+                    </select>
+                </div>
+                <div class="setting-item watermark-setting">
+                    <label>
+                        <input type="checkbox" id="enableWatermark">
+                        添加水印
+                    </label>
+                    <div class="watermark-options" style="display: none;">
+                        <input type="text" 
+                               id="watermarkText" 
+                               class="watermark-input" 
+                               placeholder="请输入水印文字">
+                        <input type="color" 
+                               id="watermarkColor" 
+                               value="#ffffff" 
+                               title="选择水印颜色">
+                        <select id="watermarkSize">
+                            <option value="16">小</option>
+                            <option value="24" selected>中</option>
+                            <option value="32">大</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="preview-area" id="previewArea" hidden>
+                <div class="original-image">
+                    <h3>原图</h3>
+                    <img id="originalPreview">
+                    <div class="image-info">
+                        <p>大小: <span id="originalSize">0 KB</span></p>
+                        <p>尺寸: <span id="imageDimensions">0 x 0</span></p>
+                        <p>格式: <span id="imageFormat">未知</span></p>
+                        <p>压缩率: <span id="compressionRatio">0%</span></p>
+                    </div>
+                </div>
+
+                <div class="compressed-image">
+                    <h3>压缩后</h3>
+                    <img id="compressedPreview">
+                    <div class="image-info">
+                        <p>大小: <span id="compressedSize">0 KB</span></p>
+                        <p>尺寸: <span id="imageDimensions">0 x 0</span></p>
+                        <p>格式: <span id="imageFormat">未知</span></p>
+                        <p>压缩率: <span id="compressionRatio">0%</span></p>
+                    </div>
+                </div>
+
+                <button id="downloadBtn" class="download-btn">下载压缩后的图片</button>
+            </div>
+
+            <div class="loading-indicator" hidden>
+                <div class="spinner"></div>
+                <p>正在处理图片...</p>
+            </div>
+
+            <div class="error-message" hidden>
+                <p>处理出错：<span id="errorText"></span></p>
+            </div>
+
+            <div class="success-message" hidden>
+                <p>压缩完成！</p>
+            </div>
+
+            <div class="no-support" hidden>
+                <p>您的浏览器可能不支持某些功能，建议使用最新版本的Chrome、Firefox、Safari或Edge浏览器。</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/compressor.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
