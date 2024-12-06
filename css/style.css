@@ -71,15 +71,16 @@ header p {
     transform: translateY(-2px);
 }
 
-.upload-hint img {
-    width: 80px;
-    height: 80px;
+.upload-hint i {
+    font-size: 64px;
+    color: var(--primary-color);
     margin-bottom: 1.5rem;
     transition: transform 0.3s ease;
 }
 
-.upload-area:hover .upload-hint img {
+.upload-area:hover .upload-hint i {
     transform: scale(1.1);
+    color: var(--primary-dark);
 }
 
 /* 压缩设置区域美化 */
@@ -220,6 +221,14 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .compression-settings h3 {
         border-bottom-color: #444;
     }
+
+    .upload-hint i {
+        color: #4a9eff;
+    }
+    
+    .upload-area:hover .upload-hint i {
+        color: #66adff;
+    }
 }
 
 /* 加载动画美化 */
@@ -266,4 +275,16 @@ input[type="range"]::-webkit-slider-thumb:hover {
     .preview-area {
         grid-template-columns: 1fr;
     }
+}
+
+/* 使用 Font Awesome 图标样式 */
+.upload-icon {
+    font-size: 48px;
+    display: block;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.upload-area:hover .upload-icon {
+    transform: scale(1.1);
 } 
